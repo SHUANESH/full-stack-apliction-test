@@ -13,22 +13,34 @@ connectDB.on('error' ,() => {
 })
 const PORT = process.env.PORT || 8080;
 
-app.get('/' , (req , res)=>{
-    try {
-        console.log("home page");
+// app.get('/' , (req , res)=>{
+//     try {
+//         console.log("home page");
         
-    } 
-    catch (error) {
-        console.log("error pleas try liter");
-        res.send("error pleas try liter")
-    }
+//     } 
+//     catch (error) {
+//         console.log("error pleas try liter");
+//         res.send("error pleas try liter")
+//     }
     
-});
+// });
 
-app.use('/user' ,newsUserRoute);
+app.use('/api/user' ,newsUserRoute);
 
 
 app.listen(PORT ,(error) => {
     if(error) return "error"
       console.log("we're on air");
 });
+
+
+if(process.env.NODE_EN==='production'){
+
+    //server any static files
+    app.use(express.static(path.join(__dirname, '../client/build')))
+
+    //handle react routing
+    app.get('*' , (req,res) => {
+        res.sendFile(path.join(__dirname, '../client/build', 'index.html'))
+    });
+};

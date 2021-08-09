@@ -4,7 +4,7 @@ const URL_DB = process.env.URL_DB;
 
 console.log(URL_DB);
 
- mongoose.connect("mongodb+srv://shuaneshAbaba:SH1470ab@tmcluster.jkepk.mongodb.net/tv", {
+ mongoose.connect("mongodb+srv://shuaneshAbaba:SH1470ab@tmcluster.jkepk.mongodb.net/myFirstDatabase?retryWrites=true&w=majority", {
     useUnifiedTopology: true,
     useNewUrlParser: true,
  }) 
