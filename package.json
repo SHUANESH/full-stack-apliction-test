@@ -1,7 +1,7 @@
 {
-  "name": "server",
+  "name": "mern-application",
   "version": "1.0.0",
-  "description": "",
+  "description": "mern-application",
   "main": "server.js",
   "scripts": {
     "setup": "npm install && cd client && npm install",
@@ -13,6 +13,7 @@
   },
   "author": "shuanesh",
   "license": "ISC",
+  
   "devDependencies": {
     "nodemon": "^2.0.12"
   },

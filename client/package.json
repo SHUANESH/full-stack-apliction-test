@@ -1,5 +1,5 @@
 {
-  "name": "my-client",
+  "name": "client",
   "version": "0.1.0",
   "private": true,
   "dependencies": {
@@ -35,8 +35,6 @@
       "last 1 safari version"
     ]
   },
-  "proxy":"http://localhost:8080/",
-  "devDependencies": {
-   
-  }
+  "proxy":"http://localhost:8080/"
+
 }
