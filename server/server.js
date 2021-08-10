@@ -2,12 +2,14 @@ const dotenv = require("dotenv");
 dotenv.config();
 
 const connectDB = require("./DB/index");
-const express = require("express");
 const cors = require("cors");
 
+const express = require("express");
 const app = express();
 
 const path = require("path");
+const PORT = process.env.PORT || 8080;
+
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 app.use(cors());
@@ -16,8 +18,6 @@ connectDB.on("error", () => {
   console.log("error");
 });
 
-
-const PORT = process.env.PORT || 8080;
 app.use("/api/user", newsUserRoute);
  
 app.listen(PORT, (error) => {
