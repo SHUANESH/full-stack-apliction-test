@@ -18,7 +18,7 @@ connectDB.on("error", () => {
   console.log("error");
 });
 
-app.use("/api/user", newsUserRoute);
+app.use("/user", newsUserRoute);
  
 app.listen(PORT, (error) => {
   if (error) return "error";
