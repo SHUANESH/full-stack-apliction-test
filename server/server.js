@@ -17,7 +17,7 @@ connectDB.on("error", () => {
 });
 
 
-const PORT = process.env.PORT || 8080;
+const PORT = process.env.PORT || 3000;
 app.use("/api/user", newsUserRoute);
  
 app.listen(PORT, (error) => {
@@ -27,9 +27,12 @@ app.listen(PORT, (error) => {
 
 if (process.env.NODE_ENV === 'production') {
   app.use(express.static(path.join(__dirname, '../client/build')));
+
   app.get('*', (req, res)=>{
+
       res.sendFile(path.join(__dirname, '../client/build', 'index.html'));
   });
+
 }
 
 
