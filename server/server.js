@@ -15,14 +15,7 @@ const newsUserRoute = require("./routes/UserRouting");
 connectDB.on("error", () => {
   console.log("error");
 });
-const PORT = process.env.PORT || 8080;
 
-app.use("/api/user", newsUserRoute);
-
-app.listen(PORT, (error) => {
-  if (error) return "error";
-  console.log("we're on air");
-});
 
 if (process.env.NODE_ENV === "production") {
   app.use(express.static(path.join(__dirname, "../client/build")));
@@ -30,3 +23,11 @@ if (process.env.NODE_ENV === "production") {
     res.sendFile(path.join(__dirname, "../client/build", "index.html"));
   });
 }
+
+const PORT = process.env.PORT || 8080;
+app.use("/api/user", newsUserRoute);
+
+app.listen(PORT, (error) => {
+  if (error) return "error";
+  console.log("we're on air");
+});
