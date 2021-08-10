@@ -1,10 +1,9 @@
 const mongoose = require("mongoose");
 const User = require("../models/userModel");
 const getArrayOfUsers = require("../arrayOfUsers");
-// const { model } = require("mongoose");
+const userValidationData = require('../validation/validationUser');
 
 const getAllUsers = async (req, res) => {
-
   try {
     await User.find({}, (error, result) => {
       if (error) throw e.message;
@@ -13,9 +12,15 @@ const getAllUsers = async (req, res) => {
   } catch (error) {
     res.json({ massage: "database problem!", error: error });
   }
-};
+}; 
 
 const creatNewUser = async (req, res) => {
+  const {errors , isValid} = userValidationData(req.body.user);
+
+  if(!isValid){
+    return res.status(400).json(errors);
+  }
+
   try {
     await User.insertMany(req.body.user, (error, result) => {
       if (error) throw e.message;

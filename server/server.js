@@ -1,38 +1,26 @@
-const dotenv = require('dotenv');
+const dotenv = require("dotenv");
 dotenv.config();
-const connectDB = require('./DB/index');
-const express = require('express');
-const cors = require('cors')
+const connectDB = require("./DB/index");
+const cors = require("cors");
+const express = require("express");
 const app = express();
-app.use(express.json());
-app.use(express.urlencoded({ extended:true }));
-app.use(cors());
-const newsUserRoute = require('./routes/UserRouting')
-connectDB.on('error' ,() => {
-    console.log(("error"));
-})
+const path = require("path");
 const PORT = process.env.PORT || 8080;
+app.use(express.json());
+app.use(express.urlencoded({ extended: true }));
+app.use(cors());
 
-// app.get('/' , (req , res)=>{
-//     try {
-//         console.log("home page");
-        
-//     } 
-//     catch (error) {
-//         console.log("error pleas try liter");
-//         res.send("error pleas try liter")
-//     }
-    
-// });
+const newsUserRoute = require("./routes/UserRouting");
+connectDB.on("error", () => {
+  console.log("error");
+});
 
 app.use('/api/user' ,newsUserRoute);
-
 
 app.listen(PORT ,(error) => {
     if(error) return "error"
       console.log("we're on air");
 });
-
 
 if(process.env.NODE_EN==='production'){
 
