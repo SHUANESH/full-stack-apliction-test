@@ -9,10 +9,11 @@ const app = express();
 
 const path = require("path");
 const PORT = process.env.PORT || 8080;
-
+///////////
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 app.use(cors());
+
 const newsUserRoute = require("./routes/UserRouting");
 connectDB.on("error", () => {
   console.log("error");
